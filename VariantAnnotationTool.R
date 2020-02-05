@@ -6,8 +6,8 @@ vcf <- read.vcfR(file.choose(), verbose = FALSE )
 
 fixed = getFIX(vcf) # fix region of vcf
 
+#SECTION 1
 # Type of variation
-
 identify.mutations = function(REF,ALT){
   
   if (length(REF) == length(ALT)){
@@ -32,10 +32,15 @@ for (i in 1:nrow(fixed)){
   variant_mutations[i] = paste(mutations, collapse = "|")
 }
 
+# SECTION 2
 # Depth of sequence coverage at the site of variation
 DP = extract.gt(vcf, element = "DP", as.numeric=TRUE)
+
+# SECTION 3
 # Number of reads supporting the variant
 AO = extract.gt(vcf, element = "AO", as.numeric=TRUE)
+
+#SECTION 4
 # Percentage of reads supporting the variant versus those supporting reference
 RO = extract.gt(vcf, element = "RO", as.numeric=TRUE)
 
@@ -50,6 +55,7 @@ for (z in 1:2){
   }
 }
 
+#SECTIONS 5 AND 6
 #API
 # API helper functions to retrieve variant info in JSON format
 API_HELPER = function(base,endpoint){
