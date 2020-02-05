@@ -2,7 +2,7 @@ rm(list = ls())
 library(vcfR)
 library(httr)
 library(jsonlite)
-vcf <- read.vcfR(file.choose(), verbose = FALSE )
+vcf <- read.vcfR(/data_files/VCFdata.vcf, verbose = FALSE )
 
 fixed = getFIX(vcf) # fix region of vcf
 
