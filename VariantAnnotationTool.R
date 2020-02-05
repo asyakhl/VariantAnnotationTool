@@ -7,7 +7,7 @@ vcf <- read.vcfR(/data_files/VCFdata.vcf, verbose = FALSE )
 fixed = getFIX(vcf) # fix region of vcf
 
 #SECTION 1
-# Type of variation
+# Type of variation: making of 'variant_mutations' vector for all of 6,977 variants
 identify.mutations = function(REF,ALT){
   
   if (length(REF) == length(ALT)){
@@ -112,6 +112,7 @@ for (i in 1:nrow(fixed)){
 }
 total.time=proc.time()-total.time
 
+# results are organized into a data frame
 output_table = data.frame(variant_mutations, DP, AO, M1, M2[,-1])
 colnames(output_table) = c("variant_mutations", "normal(ReadDepth)", "vaf5(ReadDepth)",
                            "normal(ALT_Reads)", "vaf5(ALT_Reads)", 
